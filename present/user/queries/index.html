@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raise Your Hand</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js" defer></script> 
+</head>
+<body>
+    <h1>Raise Your Hand to Ask a Doubt</h1>
+    
+    <!-- <input type="text" id="nameInput" placeholder="Enter your name" />
+    <input type="text" id="roomInput" placeholder="Enter room name" /> -->
+ 
+    <input type="text" id="roomInput" placeholder="Room Name" value="tcs" readonly />
+    <button id="joinButton">Join Room</button>
+
+    <button id="raiseButton" style="display:none;">Raise Hand ✋🏻</button>
+    <button id="lowerButton" style="display:none;">Lower Hand ✌🏻</button>
+
+    <h2>Students with Raised Hands:</h2>
+    <ul id="hands"></ul>
+</body>
+</html>

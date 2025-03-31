@@ -1,0 +1,201 @@
+body {
+    background-color: #0B2239;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+#waiting-room {
+    background-color: rgba(75, 244, 143, 0.08); 
+    padding: 40px; 
+    border-radius: 15px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px; 
+    margin: 50px auto;
+}
+
+input[type="text"], input[type="number"], input[type="file"] {
+    padding: 12px; 
+    margin: 10px 0;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: border-color 0.3s; 
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #8000ff;
+}
+
+button {
+    background-color: #8000ff; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+button:hover {
+    background-color: #6b00cc; 
+    transform: scale(1.05); 
+}
+
+button:active {
+    background-color: #5a00a3; 
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+#player-list {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+#player-list li {
+    background-color: rgba(255, 255, 255, 0.1); 
+    margin: 5px 0; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+
+#quiz-room {
+    display: flex; 
+    flex-direction: column; /* Change to column for centering */
+    align-items: center; /* Center items horizontally */
+    position: relative; 
+}
+
+
+#options {
+flex: 1; 
+    display: flex;
+    align-items: center;
+  }
+  
+
+.option-button {
+background-color: rgba(255, 255, 255, 0.1);
+border: 1px solid white;
+border-radius: 5px;
+padding: 15px;
+margin: 5px;
+flex : 1;
+cursor: pointer;
+display: flex;
+height: 60px;
+align-items: center;
+justify-content: center;
+}
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+.option-button {
+    width: 80%; /* Adjust width for mobile devices */
+}
+}
+
+.chartBox {
+    height: 350px;
+    width: 100%; /* Make the chart box take full width */
+    max-width: 700px; /* Set a max width for better appearance */
+    margin: 20px auto; /* Center the chart box */
+    position: relative; /* Allow positioning of the chart */
+}
+
+#timer-display {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.emoji-container {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    justify-content: center; 
+    position: fixed; 
+    right: 20px; 
+    top: 20px; 
+    z-index: 1000; 
+}
+
+.emoji-btn {
+    font-size: 24px;
+    background: none; 
+    border: none; 
+    cursor: default; 
+    margin: 5px; 
+    flex: 1; 
+    max-width: 50px; 
+    padding: 0; 
+    outline: none; 
+}
+
+.emoji-btn:hover,
+.emoji-btn:active {
+  background: none; 
+  transform: none; 
+}
+
+
+.floating-emoji {
+    position: absolute; 
+    font-size: 30px; 
+    animation: float 3s forwards; /* Change duration to 3 seconds */
+    transform: translate(-50%, -50%);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1); 
+        opacity: 1; 
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2); /* Move up */
+        opacity: 0.8; 
+    }
+    100% {
+        transform: translateY(-60px) scale(1); /* Move up even more */
+        opacity: 0; 
+    }
+}
+
+
+.option-button.voted {
+    background-color: rgba(255, 255, 255 , 0.3); 
+    cursor: not-allowed; 
+}
+
+#voteChart{
+height: 100%;
+width: 100%;
+}
+
+#header {
+    width: 100%; /* Full width */
+    height: 80px; /* Set a fixed height for the header */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#header img {
+    max-height: 80px; /* Keep the original max height */
+    width: auto; /* Maintain aspect ratio */
+    transform: scale(1.5); /* Scale the image to 150% of its original size */
+    transform-origin: center;  /* Maintain aspect ratio */
+}
+
+
+.you-label {
+    opacity: 0.5; /* Set the opacity */
+    font-weight: normal; /* Make it less bold */
+    color: #ffffff; /* Change the color to match your theme */
+    font-size: 0.9em; /* Slightly smaller font size */
+    margin-left: 5px; /* Add some space between the name and the label */
+}

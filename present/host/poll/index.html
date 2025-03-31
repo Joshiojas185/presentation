@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+     maximum-scale=1, user-scalable=no">
+    <title>The TCS - Poll</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header id="header">
+        <img src="logo.png" alt="Logo" />
+    </header>
+
+    <div id="main-container">
+        <div id="waiting-room">
+            <h1>Welcome to the Quiz</h1>
+            <input type="text" id="name-input" placeholder="Enter your name" />
+            <input type="text" id="room-input" placeholder="Enter room name" />
+            <button id="join-btn">Join</button>
+            <h2>Players:</h2>
+            <ul id="player-list"></ul>
+            <input type="file" id="quiz-file" style="display:none;" />
+            <input type="number" id="timer-input" style="display:none;" placeholder="Enter timer per question in seconds" />
+            <button id="upload-btn" style="display:none;">Upload Quiz</button>
+            <button id="start-btn" style="display:none;">Start Quiz</button>
+        </div>
+  
+        <div id="quiz-room" style="display:none;">
+            <h1 id="question"></h1>
+            <div id="timer-display"></div> 
+            <div class="chartBox">
+                <canvas id="voteChart"></canvas>
+            </div>
+            <div id="options"></div>
+            <div id="emoji-container">
+                <button class="emoji-btn" data-emoji="❤️">❤️</button>
+                <button class="emoji-btn" data-emoji="😂">😂</button>
+                <button class="emoji-btn" data-emoji="👏🏻">👏🏻</button>
+                <button class="emoji-btn" data-emoji="👍🏻">👍🏻</button>
+                <button class="emoji-btn" id="custom-emoji-btn">
+                    <img src="codeup.png" id="png" alt="Custom Emoji" style="width: 32px; height: 32px;">
+                </button>
+            </div>
+            <button id="next-btn" style="display:none;">Next Question</button>
+        </div>
+
+        <div id="thankyou-room" style="display:none;">
+            <!-- <h1 id = >Thank you for joining the quiz!</h1> -->
+            <h1 id="thankyou-message">Thank you for joining the quiz!</h1>
+            <button id="lock-quiz-btn" style="display: none;">Lock Quiz</button>
+            <button id="end-poll-btn" style="display: block;">End Poll</button>
+            <button id="play-again-btn" style="display: none;">Play Again</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

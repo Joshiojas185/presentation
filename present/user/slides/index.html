@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Codeup Show</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li>Logout</li>
+            <li>Feedback</li>
+            <li>History</li>
+        </ul>
+    </div>
+    <header>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <img src="logo.png" alt="Codeup Show" class="logo">
+            <button class="header-button" onclick="redirectToUpload()">upload PDF</button>
+    </header>
+    <div id="main-container">
+        <div id="waiting-room">
+            <h2>Join a Room</h2>
+            <input type="text" id="name-input" placeholder="Enter your name" />
+            <input type="text" id="room-input" placeholder="Enter room name" />
+            <button id="join-btn">Join</button>
+            <h3>Players:</h3>
+            <ul id="player-list"></ul>
+        </div>
+
+        <div id="pdf-room" style="display:none;">
+           
+            <div class="pdf-display">
+                <canvas id="pdfCanvas"></canvas>
+            </div>
+            <div class="thumbnail-container" style="display:none;" id="thumbnail-container">
+                <button id="prev-btn" class="nav-btn">❮</button>
+                <div class="thumbnails" id="thumbnail-list"></div>
+                <button id="next-btn" class="nav-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- <div class="bottom-buttons">
+        <button class="live-btn">🔴 Live</button>
+        <button class="poll-btn" onclick="redirectToPoll()">📊 Poll</button>
+        <button class="query-btn" onclick="redirectToQuery()">❓ Query Session</button>
+    </div> -->
+
+    <div class="bottom-buttons">
+        <button class="live-btn">
+            <img src="stream.png" alt="Live" style="vertical-align: middle; width: 30px; height: 30px;" />
+            Live
+        </button>
+        <button class="poll-btn" onclick="redirectToPoll()">
+            <img src="poll.png" alt="Poll" style="vertical-align: middle; width: 30px; height: 30px;" />
+            Poll
+        </button>
+        <button class="query-btn" onclick="redirectToQuery()">
+            <img src="question.png" alt="Query Session" style="vertical-align: middle; width: 30px; height: 30px;" />
+            Query
+        </button>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Codeup Show</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>The Codeup Show</h1>
+        <nav class="live-links>
+            <button class="live-button" onclick="joinLive('2', 'tcshost')">Go Live</button>
+            <button class="button" onclick="redirectToUpload()">Upload PDF</button>
+        </nav>
+    </header>
+    <div id="main-container">
+        <div id="waiting-room">
+            <h2>Join a Room</h2>
+            <input type="text" id="name-input" placeholder="Enter your name" />
+            <input type="text" id="room-input" placeholder="Enter room name" />
+            <button id="join-btn">Join</button>
+            <h3>Players:</h3>
+            <ul id="player-list"></ul>
+        </div>
+
+        <div id="pdf-room" style="display:none;">
+            <h2>PDF Viewer</h2>
+            <div class="pdf-display">
+                <canvas id="pdfCanvas"></canvas>
+            </div>
+            <div class="thumbnail-container" style="display:none;" id="thumbnail-container">
+                <button id="prev-btn" class="nav-btn">❮</button>
+                <div class="thumbnails" id="thumbnail-list"></div>
+                <button id="next-btn" class="nav-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Codeup Show</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>The Codeup Show</h1>
+        <nav class="live-links">
+            <button class="live-button" onclick="joinLive('2', 'tcshost')">Go Live</button>
+            <button class="button" id="upload-pdf-btn">Upload PDF</button>
+        </nav>
+    </header>
+    <div id="main-container">
+        <div id="waiting-room">
+            <h2>Join a Room</h2>
+            <input type="text" id="name-input" placeholder="Enter your name" />
+            <input type="text" id="room-input" placeholder="Enter room name" />
+            <button id="join-btn">Join</button>
+            <h3>Players:</h3>
+            <ul id="player-list"></ul>
+        </div>
+
+        <div id="pdf-room" style="display:none;">
+            <h2>PDF Viewer</h2>
+            <div class="pdf-display">
+                <canvas id="pdfCanvas"></canvas>
+            </div>
+            <div class="thumbnail-container" style="display:none;" id="thumbnail-container">
+                <button id="prev-btn" class="nav-btn">❮</button>
+                <div class="thumbnails" id="thumbnail-list"></div>
+                <button id="next-btn" class="nav-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        const socket = io('http://10.33.0.21:5000'); // Update this to your server address
+
+        // Set the worker source for PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        const nameInput = document.getElementById('name-input');
+        const roomInput = document.getElementById('room-input');
+        const joinBtn = document.getElementById('join-btn');
+        const playerList = document.getElementById('player-list');
+        const pdfRoom = document.getElementById('pdf-room');
+        const pdfCanvas = document.getElementById('pdfCanvas');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const thumbnailList = document.getElementById('thumbnail-list');
+
+        let pdfDoc = null;
+        let currentPage = 1;
+        let totalPages = 0;
+        let myName = '';
+        let myRoom = '';
+        let isHost = false;
+
+        // Function to get query parameters from the URL
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let m;
+
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+            return params;
+        }
+
+        // On window load, check for room parameters in the URL
+        window.onload = () => {
+            const params = getQueryParams();
+            if (params.room) {
+                const playerName = params.name;
+                roomInput.value = params.room;
+                nameInput.value = playerName;
+
+                // Delay the join event to ensure the socket connection is established
+                setTimeout(() => {
+                    joinBtn.click(); // Simulate click to join the room
+                }, 100); // Adjust the delay as needed (100ms is a good starting point)
+            }   
+        };
+
+        // Function to join a live session
+        function joinLive(roomName, playerName) {
+            // Set the room and player name in the input fields
+            document.getElementById('room-input').value = roomName;
+            document.getElementById('name-input').value = playerName;
+
+            // Simulate a click on the join button
+            setTimeout(() => {
+                joinBtn.click(); // Simulate click to join the room
+            }, 100); 
+        }
+
+        // Join button event listener
+        joinBtn.addEventListener('click', () => {
+            const name = nameInput.value.trim();
+            const roomName = roomInput.value.trim();
+            if (name && roomName) {
+                myName = name;
+                myRoom = roomName;
+                socket.emit('joinRoom', roomName, name);
+                nameInput.style.display = 'none';
+                roomInput.style.display = 'none';
+                joinBtn.style.display = 'none';
+            }
+        });
+
+        // Update player list when receiving the updatePlayers event
+        socket.on('updatePlayers', (players) => {
+            playerList.innerHTML = '';
+            players.forEach(player => {
+                const li = document.createElement('li');
+                li.innerText = player.name;
+                playerList.appendChild(li);
+            });
+        });
+
+        // Set the host flag when the host is assigned
+        socket.on('hostAssigned', () => {
+            isHost = true; // Set the host flag
+            document.getElementById('thumbnail-container').style.display = 'flex'; 
+        });
+
+        // Next and previous button event listeners
+        nextBtn.addEventListener('click', () => { // Emit next page event 
+            socket.emit('nextPage', myRoom);
+        });
+
+        prevBtn.addEventListener('click', () => { // Emit previous page event
+            socket.emit('prevPage', myRoom);
+        });
+
+        // Load the PDF when it is uploaded
+        socket.on('pdfUploaded', (pdfPath) => {
+            document.getElementById('waiting-room').style.display = 'none';
+            pdfRoom.style.display = 'block'; // Show the PDF room
+            loadPDF(pdfPath);
+        });
+
+        // Function to load the PDF document
+        function loadPDF(pdfPath) {
+            const fullPath = `http://10.33.0.21:5000${pdfPath}`; // Use the correct server URL
+            pdfjsLib.getDocument(fullPath).promise.then(pdf => {
+                pdfDoc = pdf;
+                totalPages = pdf.numPages;
+                renderPage(currentPage);
+                generateThumbnails();
+            }).catch(error => {
+                console.error("Error loading PDF:", error);
+                alert("Failed to load PDF. Please check the console for more details.");
+            });
+        }
+
+        // Function to render a specific page of the PDF
+        function renderPage(num) {
+            pdfDoc.getPage(num).then(page => {
+                const canvas = pdfCanvas;
+                const context = canvas.getContext("2d");
+                const scale = 2.0; // Adjust scale as needed
+                const viewport = page.getViewport({ scale });
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                const renderContext = { canvasContext: context, viewport: viewport };
+                page.render(renderContext).promise.then(() => {
+                    console.log(`Rendered page ${num}`);
+                }).catch(error => {
+                    console.error("Error rendering page:", error);
+                });
+            }).catch(error => {
+                console.error("Error getting page:", error);
+            });
+        }
+
+        // Function to generate thumbnails for the PDF pages
+        function generateThumbnails() {
+            thumbnailList.innerHTML = ''; // Clear existing thumbnails
+            let clickLock = false; // Lock to prevent multiple clicks
+
+            for (let i = 1; i <= totalPages; i++) {
+                pdfDoc.getPage(i).then(page => {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext("2d");
+                    const scale = 0.3; // Thumbnail scale
+                    const viewport = page.getViewport({ scale });
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.classList.add('thumbnail');
+
+                    // Render the page to the thumbnail canvas
+                    page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
+                        // Set up the click event for the thumbnail with a lock
+                        canvas.addEventListener('click', () => {
+                            if (clickLock) return; // Ignore clicks if lock is active
+                            clickLock = true; // Lock further clicks
+                            const selectedPage = i; // Page numbers start from 1
+                            socket.emit('goToPage', myRoom, selectedPage); // Emit the page change event
+
+                            setTimeout(() => {
+                                clickLock = false; // Unlock clicks after 500ms
+                            }, 500);
+                        });
+
+                        thumbnailList.appendChild(canvas); // Append the thumbnail to the list
+                    });
+                });
+            }
+        }
+
+        // Update the current page when the pageChanged event is received
+        socket.on('pageChanged', (pageNumber) => {
+            currentPage = pageNumber;
+            renderPage(pageNumber); // This should update the PDF view to the selected page
+        });
+
+        // Upload PDF button event listener
+        document.getElementById('upload-pdf-btn').addEventListener('click', () => {
+            if (!isHost) {
+                alert("Only the host can upload a PDF.");
+                return;
+            }
+
+            // Create a file input element
+            const pdfInput = document.createElement('input');
+            pdfInput.type = 'file';
+            pdfInput.accept = 'application/pdf';
+            pdfInput.onchange = (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("pdf", file);
+
+                    // Upload the PDF
+                    fetch("http://10.33.0.21:5000/upload", { // Replace with your backend IP
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        if (data.message.includes("successfully")) {
+                            // Emit event to notify that the host has uploaded a PDF
+                            socket.emit('pdfUploaded', '/uploads/slides.pdf'); // Adjust path if necessary
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+                }
+            };
+            pdfInput.click(); // Trigger the file input dialog
+        });
+    </script>
+</body>
+</html> -->

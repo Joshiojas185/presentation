@@ -1,0 +1,65 @@
+
+/* General Body Styles */
+body {
+    background-color: #0B2239; /* Dark background */
+    color: white; /* White text color */
+    font-family: 'Arial', sans-serif; /* Font style */
+    text-align: center; /* Center text */
+}
+
+/* Header Styles */
+h1 {
+    margin: 20px 0; /* Margin around the heading */
+    font-size: 2.5em; /* Larger font size for the main heading */
+}
+
+h2 {
+    margin: 20px 0; /* Margin around the subheading */
+    font-size: 1.5em; /* Font size for subheading */
+}
+
+/* Button Styles */
+button {
+    background-color: #8000ff; /* Purple background */
+    color: white; /* White text color */
+    padding: 12px 20px; /* Padding inside buttons */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    font-size: 1.2em; /* Font size for buttons */
+    margin: 10px; /* Margin around buttons */
+}
+
+/* Button Hover Styles */
+button:hover {
+    background-color: #6b00cc; /* Darker purple on hover */
+    transform: scale(1.05); /* Slightly enlarge button */
+}
+
+/* Button Active Styles */
+button:active {
+    background-color: #5a00a3; /* Even darker purple when clicked */
+}
+
+/* Raised Hands List Styles */
+#hands {
+    list-style-type: none; /* No bullet points */
+    padding: 0; /* No padding */
+    margin: 20px 0; /* Margin around the list */
+}
+
+/* Raised Hands List Item Styles */
+#hands li {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    margin: 5px 0; /* Margin between list items */
+    padding: 10px; /* Padding inside list items */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    button {
+        width: 80%; /* Full width on small screens */
+    }
+}
