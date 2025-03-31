@@ -1,4 +1,4 @@
-const socket = io('wss://platformservers.onrender.com/'); // Update this to your server address
+const socket = io('https://platformservers.onrender.com/'); // Update this to your server address
 
 const joinBtn = document.getElementById("joinButton");
 const nameInput = document.getElementById('nameInput');

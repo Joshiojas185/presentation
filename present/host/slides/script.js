@@ -1,5 +1,5 @@
 
-const socket = io('wss://platformservers-1.onrender.com/');
+const socket = io('https://platformservers-1.onrender.com/');
 // const socket = io('https://presentationbackend.onrender.com/')
 
 // Set the worker source for PDF.js
