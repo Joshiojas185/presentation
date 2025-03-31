@@ -1,5 +1,5 @@
 
-const socket = io('http://192.168.29.153:5000');
+const socket = io('wss://platformservers-1.onrender.com/');
 // const socket = io('https://presentationbackend.onrender.com/')
 
 // Set the worker source for PDF.js
@@ -139,7 +139,7 @@ socket.on('pdfUploaded', (pdfPath) => {
 
 function loadPDF(pdfPath) {
     
-    const fullPath = `http://192.168.29.153:5000${pdfPath}`;
+    const fullPath = `https://platformservers-1.onrender.com${pdfPath}`;
     // const fullPath = `https://presentationbackend.onrender.com${pdfPath}`;
     // const fullPath = `http://192.168.29.153:5000${pdfPath}`; // Use the correct server URL
     // const fullPath = `http://192.168.210.61:5000${pdfPath}`;

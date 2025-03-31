@@ -419,7 +419,7 @@ socket.on('quizEnded', () => {
     }
 
     // Show the Play Again button
-    document.getElementById('play-again-btn').style.display = 'block'; // Show the Play Again button
+    document.getElementById('play-again-btn').style.display = 'none'; // Show the Play Again button
 });
 
 // Add event listener for the Play Again button
@@ -482,7 +482,7 @@ socket.on('resetQuiz', () => {
         quizFileInput.style.display = 'block';
         timerInput.style.display = 'block';
         uploadBtn.style.display = 'block';
-        document.getElementById('lock-quiz-btn').style.display = 'block'; // Show the lock quiz button
+        document.getElementById('lock-quiz-btn').style.display = 'none'; // Show the lock quiz button
     } else {
         // Hide upload options for non-hosts
         quizFileInput.style.display = 'none';

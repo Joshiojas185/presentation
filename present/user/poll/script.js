@@ -1,7 +1,7 @@
 // const socket = io('wss://tcspoll.onrender.com/');
 // const socket = io('http://192.168.29.153:5000')
 
-const socket = io('http://192.168.29.153:4000')
+const socket = io('https://platformservers-2.onrender.com/')
 
 const nameInput = document.getElementById('name-input');
 const roomInput = document.getElementById('room-input');
@@ -419,7 +419,7 @@ socket.on('quizEnded', () => {
     }
 
     // Show the Play Again button
-    document.getElementById('play-again-btn').style.display = 'block'; // Show the Play Again button
+    document.getElementById('play-again-btn').style.display = 'none'; // Show the Play Again button
 });
 
 // Add event listener for the Play Again button
