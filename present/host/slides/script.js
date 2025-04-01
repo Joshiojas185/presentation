@@ -1,10 +1,8 @@
 
 // const socket = io('wss://platformservers-1.onrender.com/');
 
-// const socket = io('https://platformservers-1.onrender.com/');
-const socket = io('https://slidesbackend.onrender.com/');
-// const socket = io('https://platformservers-1.onrender.com/')
-// const socket = io('https://presentationbackend.onrender.com/');
+const socket = io('https://presentationbackend.onrender.com/');
+
 
 // Set the worker source for PDF.js
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
@@ -18,6 +16,8 @@ const pdfCanvas = document.getElementById('pdfCanvas');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const thumbnailList = document.getElementById('thumbnail-list');
+
+const liveBtn = document.getElementById('join-btn');
 
 
 let pdfDoc = null;
@@ -37,6 +37,43 @@ function getQueryParams() {
         params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
     }
     return params;
+}
+
+liveBtn.addEventListener('click', () => {
+    const name = localStorage.getItem('userName') || 'guest';
+    const roomName = 'tcs'; 
+    if (name && roomName) {
+        myName = name;
+        myRoom = roomName;
+        socket.emit('joinRoom', roomName, name);
+        nameInput.style.display = 'none';
+        roomInput.style.display = 'none';
+        joinBtn.style.display = 'none';
+    }
+});
+
+joinBtn.addEventListener('click', () => {
+    const room = 'tcs';
+    const roomName = room;
+    const name = localStorage.getItem('userName'); // Use the name from local storage
+    if (name && roomName) {
+        myName = name;
+        myRoom = roomName;
+        socket.emit('joinRoom', roomName, name);
+        nameInput.style.display = 'none';
+        roomInput.style.display = 'none';
+        joinBtn.style.display = 'none';
+    }
+});
+
+window.onload = () =>{
+    roomInput.value = 'tcs';
+    nameInput.value = localStorage.getItem('userName');
+
+    setTimeout(() => {
+        joinBtn.click();
+    }, 2000);
+
 }
 
 // window.onload = () => {
@@ -62,18 +99,24 @@ function getQueryParams() {
 //     }   
 // };
 
-window.onload = () => {
-    const playerName = localStorage.getItem('userName'); // Retrieve the user's name from local storage
-    const room = "tcs"; // Fixed room name
-    roomInput.value = room; // Set the room input value
+// window.onload = () => {
+//     // const playerName = localStorage.getItem('userName'); // Retrieve the user's name from local storage
+//     // const room = "tcs"; // Fixed room name
+//     // roomInput.value = room; // Set the room input value
 
-    if (playerName) {
-        setTimeout(() => {
-            joinBtn.click();
-        }, 100);
-        // joinBtn.click(); // Automatically join the room
-    }
-};
+//     // if (playerName) {
+//     //     setTimeout(() => {
+//     //         joinBtn.click();
+//     //     }, 100);
+//     //     // joinBtn.click(); // Automatically join the room
+//     // }
+
+//     setTimeout(() => {
+//         liveBtn.click();
+//     }, 200);
+// };
+
+
 
 const xyz = localStorage.getItem('userName');
 
@@ -107,19 +150,19 @@ function toggleFullScreen() {
 // Add event listener to the PDF canvas
 pdfCanvas.addEventListener('click', toggleFullScreen);
 
-joinBtn.addEventListener('click', () => {
-    const room = 'tcs';
-    const roomName = room;
-    const name = localStorage.getItem('userName'); // Use the name from local storage
-    if (name && roomName) {
-        myName = name;
-        myRoom = roomName;
-        socket.emit('joinRoom', roomName, name);
-        nameInput.style.display = 'none';
-        roomInput.style.display = 'none';
-        joinBtn.style.display = 'none';
-    }
-});
+// joinBtn.addEventListener('click', () => {
+//     const room = 'tcs';
+//     const roomName = room;
+//     const name = localStorage.getItem('userName'); // Use the name from local storage
+//     if (name && roomName) {
+//         myName = name;
+//         myRoom = roomName;
+//         socket.emit('joinRoom', roomName, name);
+//         nameInput.style.display = 'none';
+//         roomInput.style.display = 'none';
+//         joinBtn.style.display = 'none';
+//     }
+// });
 
 // document.getElementById('joinButton').addEventListener('click', () => {
 //     const name = localStorage.getItem('userName'); // Use the name from local storage
@@ -165,10 +208,8 @@ socket.on('pdfUploaded', (pdfPath) => {
 
 function loadPDF(pdfPath) {
     
-    const fullPath = `https://slidesbackend.onrender.com${pdfPath}`;
-    // const fullPath = `https://presentationbackend.onrender.com${pdfPath}`;
-    // const fullPath = `http://192.168.29.153:5000${pdfPath}`; // Use the correct server URL
-    // const fullPath = `http://192.168.210.61:5000${pdfPath}`;
+    const fullPath = `https://presentationbackend.onrender.com${pdfPath}`;
+   
     
     pdfjsLib.getDocument(fullPath).promise.then(pdf => {
         pdfDoc = pdf;

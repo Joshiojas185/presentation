@@ -1,5 +1,6 @@
 const socket = io('https://platformservers.onrender.com/'); // Update this to your server address
 
+// const socket = io('http://192.168.29.153:3000')
 const joinBtn = document.getElementById("joinButton");
 const nameInput = document.getElementById('nameInput');
 const roomInput = document.getElementById('roomInput');
