@@ -276,7 +276,9 @@ function generateThumbnails() {
     }
 }
 
-
+socket.on('connect', () => {
+    console.log('Connected to server');
+});
 
 socket.on('pageChanged', (pageNumber) => {
     currentPage = pageNumber;
